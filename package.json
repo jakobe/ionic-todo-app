@@ -37,5 +37,8 @@
     "@ionic/app-scripts": "3.0.1",
     "typescript": "2.3.4"
   },
+  "config": {
+    "ionic_copy": "./config/copy.config.js"
+  },
   "description": "Offline-first PWA for all things to do"
 }
