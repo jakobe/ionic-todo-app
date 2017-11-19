@@ -1,13 +1,13 @@
 {
   "name": "ionic-todo-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "buildprod": "ionic-app-scripts build --prod --wwwDir docs --buildDir docs/build",
+    "buildprod": "ionic-app-scripts build --prod --wwwDir docs",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
@@ -35,5 +35,5 @@
     "@ionic/app-scripts": "3.0.1",
     "typescript": "2.3.4"
   },
-  "description": "An Ionic project"
+  "description": "Offline-first PWA for all things to do"
 }
