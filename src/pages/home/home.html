@@ -1,14 +1,60 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Do It!
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content [ngStyle]="{'background': '#f4f4f4'}">
+
+  <ion-searchbar placeholder="Search Items"></ion-searchbar>
+  <!-- <ion-searchbar placeholder="Search Items" (ionInput)="filterItems($event)"></ion-searchbar> -->
+
+  <!-- <ion-item-divider color="light"></ion-item-divider> -->
+
+  <ion-list >     
+      <button ion-item (click)="goToInbox()" icon-start>
+        <ion-icon name='ios-filing' color='primary' item-start></ion-icon>
+        Inbox
+        <ion-badge *ngIf="lists.inbox.overdue" color='danger' item-end>{{lists.inbox.overdue}}</ion-badge>
+        <ion-note *ngIf="lists.inbox.notdone" item-end>{{lists.inbox.notdone}}</ion-note>
+        </button>
+  </ion-list>
+
+  <ion-list >
+    <button ion-item (click)="goToToday()" icon-start>
+      <ion-icon name='star' color='bright' item-start></ion-icon>
+      Today
+      <ion-badge *ngIf="lists.today.overdue" color='danger' item-end>{{lists.today.overdue}}</ion-badge>
+      <ion-note *ngIf="lists.today.notdone" item-end>{{lists.today.notdone}}</ion-note>
+    </button>
+
+    <button ion-item icon-start>
+      <ion-icon name='albums' [ngStyle]="{'color': 'gray'}" item-start></ion-icon>
+      Next
+    </button>
+
+    <button ion-item icon-start>
+      <ion-icon name='calendar' [ngStyle]="{'color': '#E63135'}" item-start></ion-icon>
+      Scheduled
+    </button>
+
+    <button ion-item icon-start>
+      <ion-icon name='ios-archive' [ngStyle]="{'color': '#c7ad7b'}" item-start></ion-icon>
+      Someday
+      <ion-note item-end>
+      ...maybe
+      </ion-note>
+    </button>   
+  </ion-list>
+
+  <ion-list >     
+    <button ion-item icon-start>
+      <ion-icon name='cube' [ngStyle]="{'color': 'lightgray'}" item-start></ion-icon>
+      My projects
+      <ion-note item-end>5</ion-note>
+    </button>
+</ion-list>
+
 </ion-content>
