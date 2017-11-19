@@ -1,0 +1,38 @@
+{
+	"masterPicture": "./icon/Basher Logo B - 100 grey - 260x260.png",
+	"iconsPath": "/",
+	"design": {
+		"ios": {
+			"pictureAspect": "backgroundAndMargin",
+			"backgroundColor": "#ffffff",
+			"margin": "14%",
+			"assets": {
+				"ios6AndPriorIcons": false,
+				"ios7AndLaterIcons": false,
+				"precomposedIcons": false,
+				"declareOnlyDefaultIcon": true
+			}
+		},
+		"desktopBrowser": {},
+		"androidChrome": {
+			"pictureAspect": "noChange",
+			"themeColor": "#2ecc40",
+			"manifest": {
+				"startUrl": "index.html",
+				"display": "standalone",
+				"orientation": "notSet",
+				"existingManifest": "{\"name\": \"Do it! by Basher\", \"short_name\": \"Do it!\"}",
+				"onConflict": "keep_existing",
+				"declared": true
+			},
+			"assets": {
+				"legacyIcon": false,
+				"lowResolutionIcons": false
+			}
+		}
+	},
+	"settings": {
+		"scalingAlgorithm": "Mitchell",
+		"errorOnImageTooSmall": false
+	}
+}

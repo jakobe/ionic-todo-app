@@ -8,6 +8,8 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "buildprod": "ionic-app-scripts build --prod --wwwDir docs",
+    "generate-favicon": "real-favicon generate faviconConfig.json faviconData.json src",
+    "inject-favicon" : "real-favicon inject faviconData.json src src/index.html",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
