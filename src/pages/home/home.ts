@@ -14,7 +14,7 @@ const itemFilter = {
   overdue(item) {
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());  
-    return item.isDone === false && item.dueDate > today
+    return item.isDone === false && item.dueDate != null && item.dueDate < today    
   }
 }
 
