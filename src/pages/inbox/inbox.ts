@@ -16,16 +16,16 @@ import { TodoItem } from '../../models/TodoItem';
   </ion-header>
 
   <ion-content>
-    <ion-list *ngIf="adding" inset>
+    <ion-list [hidden]="!adding" inset>
       <ion-item>
-        <ion-input id="newTodo" [(ngModel)]="newItem.title" ion-input placeholder="What to do...?"></ion-input>
+        <ion-input #newTodo [(ngModel)]="newItem.title" ion-input placeholder="What to do...?"></ion-input>
       </ion-item>
       <ion-item>
         <button round icon-only large item-right ion-button color='danger' (click)="adding = false;">
           <ion-icon name='close'></ion-icon>
         </button>
         <button round icon-only large item-right ion-button color='secondary' (click)="addItem()">
-        <ion-icon name='checkmark'></ion-icon>
+          <ion-icon name='checkmark'></ion-icon>
         </button>
       </ion-item>
     </ion-list>
@@ -57,12 +57,12 @@ import { TodoItem } from '../../models/TodoItem';
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-    <button ion-button large round color='primary' icon-only (click)="adding = true; //document.getElementById('newTodo').focus();">
+    <button ion-button large round color='primary' icon-only (click)="showAddNew(newTodo);">
       <ion-icon name='add' icon-end></ion-icon>    
     </button>
   </ion-content>`
 })
-export class InboxPage {
+export class InboxPage {   
   items:TodoItem[];
   adding : Boolean;
   newItem = {
@@ -91,6 +91,10 @@ export class InboxPage {
       this.items.splice(index, 1);
       this.save();    
     }
+  };
+  showAddNew(input) {
+    this.adding = true;
+    setTimeout(function() {input.setFocus();}, 1);
   };
   constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
     this.items = dataProvider.items.inbox;
