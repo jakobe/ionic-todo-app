@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
 import { TodayPage } from '../pages/today/today';
 import { DataProvider } from '../providers/data/data';
+import { APP_CONFIG, CONFIG } from './config/app.config';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataProvider } from '../providers/data/data';
   ],
   providers: [
     DataProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: APP_CONFIG, useValue: CONFIG}
   ]
 })
 export class AppModule {}
