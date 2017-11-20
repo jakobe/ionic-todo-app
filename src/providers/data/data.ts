@@ -26,7 +26,8 @@ export class DataProvider {
       if(result) {
         this.items = result;
       } else {
-        debugger;
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() -1);
         this.items = {
           inbox: [
             new TodoItem ('Buy something', 'Maybe something nice...', true),
@@ -34,7 +35,7 @@ export class DataProvider {
             new TodoItem ('Show Ebbe Ionic', 'He would benefit...'),
           ],
           today: [
-            new TodoItem ('Arrange music for party', 'DJ Trump', false, new Date(), true),
+            new TodoItem ('Arrange music for party', 'DJ Trump', false, yesterday, true),
             new TodoItem ('Buy cake for mom', 'The Blueberry one she loves so much'),
             new TodoItem ('Buy cake for mom', 'The Blueberry one she loves so much'),
           ] 
