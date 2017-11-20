@@ -1,18 +1,19 @@
 {
   "name": "ionic-todo-app",
-  "version": "0.0.2",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "0.0.3",
+  "author": "Basher",
+  "homepage": "http://basher.dk/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "buildprod": "ionic-app-scripts build --prod --wwwDir docs",
+    "buildprod": "node scripts/version.js && ionic-app-scripts build --prod --wwwDir docs",
     "generate-favicon": "real-favicon generate faviconConfig.json faviconData.json src",
-    "inject-favicon" : "real-favicon inject faviconData.json src src/index.html",
+    "inject-favicon": "real-favicon inject faviconData.json src src/index.html",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "prebuild": "node scripts/version.js"
   },
   "dependencies": {
     "@angular/common": "4.4.4",
