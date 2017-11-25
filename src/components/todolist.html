@@ -13,7 +13,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+    <ion-list [reorder]="showReorder | async" (ionItemReorder)="reorderItems($event)">
         <ion-item-sliding *ngFor="let todo of todos | async" #slidingItem>
             <ion-item>
                 <ion-checkbox [(ngModel)]="todo.isDone" (click)="save()" item-start></ion-checkbox>

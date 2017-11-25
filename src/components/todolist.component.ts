@@ -17,7 +17,19 @@ export class TodoList {
     newItem = {
       title: ""
     };
+
+    get count() {
+      return this.todos.map(todos => todos.length);
+    }  
     
+    get notdoneCount() {
+      return this.todos.map(todos => todos.filter(item => item.isDone === false).length);
+    }  
+
+    get showReorder() {
+      return this.count.map(count => count > 1);
+    }  
+
     save() : void {
       this.todoProvider.save();
     };
