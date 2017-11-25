@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
+import { Observable } from 'rxjs/Observable';
 import { TodoItem } from '../../models/TodoItem';
+import { TodoProvider } from '../../providers/todo/todo';
 
 @Component({
   selector: 'page-today',
@@ -16,21 +16,15 @@ import { TodoItem } from '../../models/TodoItem';
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let item of items" icon-end>
-        <ion-checkbox [(ngModel)]="item.isDone" item-start></ion-checkbox>
-        <ion-label>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }} <ion-icon small *ngIf="item.call" name="call" item-end></ion-icon></p>
-          <p *ngIf="item.dueDate"><em>{{item.dueDate | date:'d MMM yy'}}</em></p>        
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <todo-list [todos]="todos"></todo-list>
   </ion-content>`
 })
 export class TodayPage {
-  items:TodoItem[];
-  constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
-    this.items = dataProvider.items.today;
+  todos: Observable<TodoItem[]>;  
+  constructor(private todoProvider: TodoProvider) {
   }
+
+  ngOnInit() {
+    this.todos = this.todoProvider.today;
+  }  
 }

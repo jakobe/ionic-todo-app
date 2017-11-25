@@ -7,15 +7,18 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
 import { TodayPage } from '../pages/today/today';
+import { TodoList } from '../components/todolist';
 import { DataProvider } from '../providers/data/data';
 import { APP_CONFIG, CONFIG } from './config/app.config';
+import { TodoProvider } from '../providers/todo/todo';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     InboxPage,
-    TodayPage
+    TodayPage,
+    TodoList
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { APP_CONFIG, CONFIG } from './config/app.config';
   ],
   providers: [
     DataProvider,
+    TodoProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: APP_CONFIG, useValue: CONFIG}
   ]

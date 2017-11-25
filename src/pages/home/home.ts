@@ -1,22 +1,19 @@
 import { Component, Inject } from '@angular/core';
+import 'rxjs/add/operator/count';
 import { NavController } from 'ionic-angular';
 import { InboxPage } from '../inbox/inbox';
 import { TodayPage } from '../today/today';
-import { DataProvider } from '../../providers/data/data';
+import { TodoItem } from '../../models/TodoItem';
+import { TodoProvider } from '../../providers/todo/todo';
 import { APP_CONFIG, AppConfig } from '../../app/config/app.config';
 
-const itemFilter = {
+function _notdone(item:TodoItem) {
+  return item.isDone === false;
+};
 
-  notdone(item) {
-    return item.isDone === false;
-  },
-  
-  overdue(item) {
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());  
-    return item.isDone === false && item.dueDate != null && item.dueDate < today    
-  }
-}
+function _overdue(item:TodoItem) {
+  return item.isDone === false && item.isOverdue;
+};
 
 @Component({
   selector: 'page-home',
@@ -27,16 +24,16 @@ const itemFilter = {
 export class HomePage {
   lists = {};
   version:string;
-  constructor(public navCtrl: NavController, public dataProvider: DataProvider, @Inject(APP_CONFIG) config: AppConfig) {
+  constructor(private navCtrl: NavController, private todoProvider: TodoProvider, @Inject(APP_CONFIG) config: AppConfig) {
     this.version = config.version;
     this.lists = {
       inbox: {
-        get notdone() { return dataProvider.items.inbox.filter(itemFilter.notdone).length; },
-        get overdue() { return dataProvider.items.inbox.filter(itemFilter.overdue).length; }
+        notdone: todoProvider.inbox.map(todos => todos.filter(_notdone).length),
+        overdue: todoProvider.inbox.map(todos => todos.filter(_overdue).length)
       },
       today: {
-        get notdone() { return dataProvider.items.today.filter(itemFilter.notdone).length; },
-        get overdue() { return dataProvider.items.today.filter(itemFilter.overdue).length; }
+        notdone: todoProvider.today.map(todos => todos.filter(_notdone).length),
+        overdue: todoProvider.today.map(todos => todos.filter(_overdue).length)
       }
     };
   }
