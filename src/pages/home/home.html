@@ -13,13 +13,13 @@
 
   <!-- <ion-item-divider color="light"></ion-item-divider> -->
 
-  <ion-list >     
+  <ion-list>     
       <button ion-item (click)="goToInbox()" icon-start>
         <ion-icon name='ios-filing' color='primary' item-start></ion-icon>
         Inbox
         <ion-badge *ngIf="lists.inbox.overdue | async" color='danger' item-end>{{lists.inbox.overdue | async}}</ion-badge>
         <ion-note *ngIf="lists.inbox.notdone | async" item-end>{{lists.inbox.notdone | async}}</ion-note>
-        </button>
+      </button>
   </ion-list>
 
   <ion-list >
@@ -30,7 +30,7 @@
       <ion-note *ngIf="lists.today.notdone | async" item-end>{{lists.today.notdone | async}}</ion-note>
     </button>
 
-    <button ion-item icon-start>
+    <button ion-item icon-start detail-none>
       <ion-icon name='albums' [ngStyle]="{'color': 'gray'}" item-start></ion-icon>
       Next
     </button>
