@@ -4,13 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { InboxPage } from '../pages/inbox/inbox';
-import { TodayPage } from '../pages/today/today';
-import { TodoList } from '../components/todolist';
-import { DataProvider } from '../providers/data/data';
+import { HomePage } from '../pages/home/home.component';
+import { InboxPage } from '../pages/inbox/inbox.component';
+import { TodayPage } from '../pages/today/today.component';
+import { TodoList } from '../components/todolist.component';
+import { DataProvider } from '../providers/data/data.provider';
 import { APP_CONFIG, CONFIG } from './config/app.config';
-import { TodoProvider } from '../providers/todo/todo';
+import { TodoProvider } from '../providers/todo/todo.provider';
 
 @NgModule({
   declarations: [

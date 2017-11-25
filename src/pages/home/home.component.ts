@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import 'rxjs/add/operator/count';
 import { NavController } from 'ionic-angular';
-import { InboxPage } from '../inbox/inbox';
-import { TodayPage } from '../today/today';
+import { InboxPage } from '../inbox/inbox.component';
+import { TodayPage } from '../today/today.component';
 import { TodoItem } from '../../models/TodoItem';
-import { TodoProvider } from '../../providers/todo/todo';
+import { TodoProvider } from '../../providers/todo/todo.provider';
 import { APP_CONFIG, AppConfig } from '../../app/config/app.config';
 
 function _notdone(item:TodoItem) {

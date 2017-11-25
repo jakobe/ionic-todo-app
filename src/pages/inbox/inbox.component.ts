@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { TodoItem } from '../../models/TodoItem';
-import { TodoProvider } from '../../providers/todo/todo';
+import { TodoProvider } from '../../providers/todo/todo.provider';
 
 @Component({
   selector: 'page-inbox',
