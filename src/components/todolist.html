@@ -18,8 +18,8 @@
             <ion-checkbox [(ngModel)]="todo.isDone" (click)="save()" item-start></ion-checkbox>
             <ion-label>
             <h3>
-                <ion-icon *ngIf="todo.isDueToday && !todo.dueTonight" name='star' color='bright'></ion-icon>
-                <ion-icon *ngIf="todo.isDueToday && todo.dueTonight" name='moon' color='primary'></ion-icon>
+                <ion-icon *ngIf="showIcons && todo.isDueToday && !todo.dueTonight" name='star' color='bright'></ion-icon>
+                <ion-icon *ngIf="showIcons && todo.isDueToday && todo.dueTonight" name='moon' color='primary'></ion-icon>
                 {{ todo.title }}</h3>
             <p class="due-date" *ngIf="todo.dueDate" [ngClass]="{'overdue': todo.isOverdue}"><em>{{todo.dueDate | date:'EEE, d. MMM' | lowercase}}</em></p>
             <p class="description">{{ todo.description }} <ion-icon inline small *ngIf="todo.call" name="call" item-end></ion-icon></p>

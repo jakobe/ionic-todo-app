@@ -12,12 +12,12 @@ import { TodoItem } from '../models/TodoItem';
 })
 export class TodoList {
     @Input() todos: Observable<TodoItem[]>;
+    @Input() showIcons: boolean = true;
     @Input() showAddButton: boolean = true;
+    @Input() newDefaults: TodoItem;
 
     adding : Boolean;
-    newItem = {
-      title: ""
-    };
+    newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
 
     get count() {
       return this.todos.map(todos => todos.length);
@@ -36,12 +36,8 @@ export class TodoList {
     };
     
     addItem() : void {
-      var newItem = new TodoItem(this.newItem.title, "");
-      this.todoProvider.create(newItem);
+      this.todoProvider.create(this.newItem);
       this.adding = false;
-      this.newItem = {
-        title: ""
-      };
     };
     
     reorderItems(indexes) {
@@ -52,13 +48,14 @@ export class TodoList {
         // console.log("itemFrom: %s", itemFrom.title);
         // console.log("itemTo: %s", itemTo.title);
         this.todoProvider.reorder(itemFrom, itemTo);
-      });    
+      });
     }
     
     delete(item : TodoItem) {
       this.todoProvider.delete(item);      
     };
     showAddNew(input) {
+      this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
       this.adding = true;
       setTimeout(function() {input.setFocus();}, 1);
     };
