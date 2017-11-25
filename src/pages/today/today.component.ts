@@ -12,6 +12,9 @@ import { TodoItem } from '../../models/TodoItem';
         <ion-icon name='star' color='bright'></ion-icon>
         Today
       </ion-title>
+      <ion-buttons end>
+        <ion-note padding-right>{{count | async}}</ion-note>
+    </ion-buttons>
     </ion-navbar>
   </ion-header>
 
@@ -27,8 +30,16 @@ export class TodayPage {
   constructor(private todoProvider: TodoProvider) {
   }
 
+  get todos() {
+    return this.todoProvider.today;
+  }
+ 
+  get count() {
+    return this.todos.map(todos => todos.filter(item => item.isDone === false).length);
+  }
+
   get today() {
-    return this.todoProvider.today.map(
+    return this.todos.map(
       todos => todos.filter(
         todo => !todo.dueTonight
       )
@@ -36,22 +47,11 @@ export class TodayPage {
   }
 
   get tonight() {
-    return this.todoProvider.today.map(
+    return this.todos.map(
       todos => todos.filter(
         todo => todo.dueTonight
       )
     );
   }
 
-  get todos() {
-    return this.todoProvider.today.map(todos => todos.sort(
-      (a,b) => {
-        if(!a.dueTonight && b.dueTonight)
-          return -1;
-        if(a.dueTonight && !b.dueTonight)
-          return 1;
-        return 0;
-      }
-    ))
-  }
 }
