@@ -9,7 +9,6 @@ import { InboxPage } from '../pages/inbox/inbox.component';
 import { TodayPage } from '../pages/today/today.component';
 import { TodoList } from '../components/todolist.component';
 import { TodoProvider } from '../providers/todo/todo.provider';
-import { DataProvider } from '../providers/data/data.provider';
 import { APP_CONFIG, CONFIG } from './config/app.config';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { APP_CONFIG, CONFIG } from './config/app.config';
     TodayPage
   ],
   providers: [
-    DataProvider,
     TodoProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: APP_CONFIG, useValue: CONFIG}
