@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
-import { TodoItem } from '../../models/TodoItem';
 import { TodoProvider } from '../../providers/todo/todo.provider';
-
+import { TodoItem } from '../../models/TodoItem';
+  
 @Component({
   selector: 'page-today',
   template: `
@@ -17,15 +16,42 @@ import { TodoProvider } from '../../providers/todo/todo.provider';
   </ion-header>
 
   <ion-content>
-    <todo-list [todos]="todos"></todo-list>
+    <todo-list [todos]="today" [showIcons]="false" [showAddButton]="false"></todo-list>
+    <ion-item style="border-bottom: 1px dotted #ccc" padding-left padding-right><ion-icon name="moon" color="primary"></ion-icon>Tonight</ion-item>
+    <todo-list [todos]="tonight" [showIcons]="false" [newDefaults]="newDefaults"></todo-list>
   </ion-content>`
 })
+
 export class TodayPage {
-  todos: Observable<TodoItem[]>;  
+  newDefaults = new TodoItem("", "", false, TodoItem.today);
   constructor(private todoProvider: TodoProvider) {
   }
 
-  ngOnInit() {
-    this.todos = this.todoProvider.today;
-  }  
+  get today() {
+    return this.todoProvider.today.map(
+      todos => todos.filter(
+        todo => !todo.dueTonight
+      )
+    );
+  }
+
+  get tonight() {
+    return this.todoProvider.today.map(
+      todos => todos.filter(
+        todo => todo.dueTonight
+      )
+    );
+  }
+
+  get todos() {
+    return this.todoProvider.today.map(todos => todos.sort(
+      (a,b) => {
+        if(!a.dueTonight && b.dueTonight)
+          return -1;
+        if(a.dueTonight && !b.dueTonight)
+          return 1;
+        return 0;
+      }
+    ))
+  }
 }
