@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
-import { TodoItem } from '../../models/TodoItem';
 import { Storage } from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+import { TodoItem } from '../../models/TodoItem';
 
 const STORAGE_KEY = 'todoItems';
 
