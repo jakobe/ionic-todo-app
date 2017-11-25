@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { MyApp } from './app.component';
+import { TodoApp } from './app.component';
 import { HomePage } from '../pages/home/home.component';
 import { InboxPage } from '../pages/inbox/inbox.component';
 import { TodayPage } from '../pages/today/today.component';
@@ -13,7 +13,7 @@ import { APP_CONFIG, CONFIG } from './config/app.config';
 
 @NgModule({
   declarations: [
-    MyApp,
+    TodoApp,
     HomePage,
     InboxPage,
     TodayPage,
@@ -21,12 +21,12 @@ import { APP_CONFIG, CONFIG } from './config/app.config';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(TodoApp),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    TodoApp,
     HomePage,
     InboxPage,
     TodayPage

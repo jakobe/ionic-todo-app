@@ -5,7 +5,7 @@ import { HomePage } from '../pages/home/home.component';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class TodoApp {
   rootPage:any = HomePage;
 
   constructor(platform: Platform) {
