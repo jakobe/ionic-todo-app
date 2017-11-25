@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ItemSliding } from 'ionic-angular';
-import { TodoProvider } from '../providers/todo/todo';
+import { TodoProvider } from '../providers/todo/todo.provider';
 import { TodoItem } from '../models/TodoItem';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/first';
