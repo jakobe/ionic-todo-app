@@ -26,9 +26,6 @@ import { TodoProvider } from '../../providers/todo/todo.provider';
 export class InboxPage {   
   todos: Observable<TodoItem[]>;
   constructor(private todoProvider: TodoProvider) {
-  }
-
-  ngOnInit() {
     this.todos = this.todoProvider.inbox;
   }
   
