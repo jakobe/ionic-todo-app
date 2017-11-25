@@ -43,6 +43,6 @@
         </ion-item-options>
     </ion-item-sliding>
 </ion-list>
-<button ion-button class="add" large round color='primary' icon-only (click)="showAddNew(newTodo);">
+<button *ngIf="showAddButton" ion-button class="add" large round color='primary' icon-only (click)="showAddNew(newTodo);">
     <ion-icon name='add' icon-end></ion-icon>    
 </button>

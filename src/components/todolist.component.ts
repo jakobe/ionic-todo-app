@@ -12,6 +12,7 @@ import { TodoItem } from '../models/TodoItem';
 })
 export class TodoList {
     @Input() todos: Observable<TodoItem[]>;
+    @Input() showAddButton: boolean = true;
 
     adding : Boolean;
     newItem = {
