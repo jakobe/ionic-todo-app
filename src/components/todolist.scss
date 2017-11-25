@@ -1,0 +1,12 @@
+todo-list {
+
+    p.overdue {
+        color: color($colors, danger);
+    }
+    
+    .item-md ion-icon[inline] {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+}
