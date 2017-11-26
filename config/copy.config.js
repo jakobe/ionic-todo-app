@@ -7,7 +7,11 @@ module.exports = {
       dest: '{{WWW}}'
     },
     copyFavicon: {
-        src: ['{{SRC}}/favicon.ico'],
-        dest: '{{WWW}}'
-      }  
+      src: ['{{SRC}}/favicon.ico'],
+      dest: '{{WWW}}'
+    },
+    copyWorkbox: {
+      src: ['{{SRC}}/workbox-sw.prod.*.js'],
+      dest: '{{WWW}}'
+    }
   }
