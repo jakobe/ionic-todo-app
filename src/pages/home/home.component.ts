@@ -25,7 +25,7 @@ function _overdue(item:TodoItem) {
 export class HomePage {
   lists = {};
   version:string;
-  constructor(private navCtrl: NavController, private todoProvider: TodoProvider, @Inject(APP_CONFIG) config: AppConfig) {
+  constructor(private navCtrl: NavController, public todoProvider: TodoProvider, @Inject(APP_CONFIG) config: AppConfig) {
     this.version = config.version;
     this.lists = {
       inbox: {
