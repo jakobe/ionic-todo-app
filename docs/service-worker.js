@@ -24,7 +24,7 @@ const fileManifest = [
   },
   {
     "url": "build/main.js",
-    "revision": "7bf7ce86e178784fd5abdb841c62148c"
+    "revision": "ce6e689f34f8a36060f612a399b68c8a"
   },
   {
     "url": "build/polyfills.js",
