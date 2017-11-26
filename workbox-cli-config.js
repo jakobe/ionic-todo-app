@@ -3,6 +3,7 @@ module.exports = {
   "globPatterns": [
     "**/*.{txt,png,ico,html,js,json,css}"
   ],
+  "swSrc": "src/service-worker.js",
   "swDest": "docs/service-worker.js",
   "globIgnores": [
     "service-worker.js",

@@ -24,46 +24,5 @@ const workboxSW = new self.WorkboxSW({
 });
 const cacheFirstStrategy = workboxSW.strategies.cacheFirst();
 workboxSW.router.registerRoute('/*', cacheFirstStrategy);
-workboxSW.precache([
-  {
-    "url": "build/main.css",
-    "revision": "1ce7d89bf541c3deca0ceac44d15b91e"
-  },
-  {
-    "url": "build/main.js",
-    "revision": "ce6e689f34f8a36060f612a399b68c8a"
-  },
-  {
-    "url": "build/polyfills.js",
-    "revision": "a0f85bbdf3767a0ba06226c4ba43053f"
-  },
-  {
-    "url": "build/vendor.js",
-    "revision": "d03aff83c5d6a95ba2196b496a194774"
-  },
-  {
-    "url": "favicon-16x16.png",
-    "revision": "e4cf943a61395f00b8142509c50f358b"
-  },
-  {
-    "url": "favicon-32x32.png",
-    "revision": "704f843114c46926df788af89bef96ff"
-  },
-  {
-    "url": "favicon.ico",
-    "revision": "01e28adca754a6082ac7430b470c0661"
-  },
-  {
-    "url": "index.html",
-    "revision": "34e4647172ec5c0437d066f051ccfec5"
-  },
-  {
-    "url": "manifest.json",
-    "revision": "d4aa2e2bbe4298dc470269c49a731013"
-  },
-  {
-    "url": "workbox-sw.prod.v2.1.2.js",
-    "revision": "685d1ceb6b9a9f94aacf71d6aeef8b51"
-  }
-]);
+workboxSW.precache([]);
 
