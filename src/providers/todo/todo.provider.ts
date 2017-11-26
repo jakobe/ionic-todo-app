@@ -39,7 +39,7 @@ export class TodoProvider {
           this.dataStore.todos = result.map(_todoItemFromData);          
         } else if (Array.isArray(result.inbox) && Array.isArray(result.today)) {
           //Convert from legacy schema:
-          this.dataStore.todos = result.inbox.concact(result.today).map(_todoItemFromData);          
+          this.dataStore.todos = result.inbox.concat(result.today).map(_todoItemFromData);          
           this.saveToStorage();
         }
       } else {
