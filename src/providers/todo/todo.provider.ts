@@ -35,7 +35,13 @@ export class TodoProvider {
  loadInitialData() {
     this.loadFromStorage().then(result => {
       if(result) {
-        this.dataStore.todos = result.map(_todoItemFromData);
+        if (Array.isArray(result)) {
+          this.dataStore.todos = result.map(_todoItemFromData);          
+        } else if (Array.isArray(result.inbox) && Array.isArray(result.today)) {
+          //Convert from legacy schema:
+          this.dataStore.todos = result.inbox.concact(result.today).map(_todoItemFromData);          
+          this.saveToStorage();
+        }
       } else {
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() -1);
