@@ -1,19 +1,19 @@
 {
   "name": "ionic-todo-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Basher",
   "homepage": "http://basher.dk/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build && workbox-cli inject:manifest --config-file=workbox-cli-config.local.js",
-    "buildprod": "node scripts/version.js && ionic-app-scripts build --prod --wwwDir docs && workbox-cli inject:manifest",
+    "prebuild:prod": "node scripts/version.js",
+    "build:prod": "ionic-app-scripts build --prod --wwwDir docs ",
+    "postbuild:prod": "workbox-cli inject:manifest",
     "generate-favicon": "real-favicon generate faviconConfig.json faviconData.json src",
     "inject-favicon": "real-favicon inject faviconData.json src src/index.html",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve",
-    "prebuild": "node scripts/version.js"
+    "workbox:dev": "workbox-cli inject:manifest --config-file=workbox-cli-config.local.js",
+    "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "4.4.4",
