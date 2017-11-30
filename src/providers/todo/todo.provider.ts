@@ -9,7 +9,7 @@ import { TodoItem } from '../../models/TodoItem';
 const STORAGE_KEY = 'todoItems';
 
 function _todoItemFromData(data) {
-  return new TodoItem(data.title, data.description, data.isDone, data.dueDate, data.dueTonight, data.call);
+  return new TodoItem(data.title, data.description, data.isDone, data.dueDate ? new Date(data.dueDate) : null, data.dueTonight, data.call);
 }
 /*
   Generated class for the TodoProvider provider.
