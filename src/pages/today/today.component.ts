@@ -20,8 +20,8 @@ import { TodoItem } from '../../models/TodoItem';
 
   <ion-content>
     <todo-list [todos]="today" [showIcons]="false" [showAddButton]="false"></todo-list>
-    <ion-item style="border-bottom: 1px dotted #ccc" padding-left padding-right><ion-icon name="moon" color="primary"></ion-icon>Tonight</ion-item>
-    <todo-list [todos]="tonight" [showIcons]="false" [newDefaults]="newDefaults"></todo-list>
+    <ion-item *ngIf="tonightCount | async" style="border-bottom: 1px dotted #ccc" padding-left padding-right><ion-icon name="moon" color="primary"></ion-icon>Tonight</ion-item>
+    <todo-list *ngIf="tonightCount | async" [todos]="tonight" [showIcons]="false" [newDefaults]="newDefaults"></todo-list>
   </ion-content>`
 })
 
@@ -52,6 +52,10 @@ export class TodayPage {
         todo => todo.dueTonight
       )
     );
+  }
+
+  get tonightCount() {
+    return this.tonight.map(todos => todos.length);
   }
 
 }
