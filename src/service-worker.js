@@ -17,13 +17,9 @@ importScripts('workbox-sw.prod.v2.1.2.js');
  * manifest which accounts for changes to local files and update the revision
  * accordingly.
  */
-self.onmessage = (msg) => {
-    console.log("Message recieved: ", msg);
-     if (msg.data === "skipWaiting") {
-       self.skipWaiting();
-     }
-  };
-const workboxSW = new self.WorkboxSW();
+const workboxSW = new self.WorkboxSW({
+  "skipWaiting": true
+});
 const cacheFirstStrategy = workboxSW.strategies.cacheFirst();
 workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([]);
