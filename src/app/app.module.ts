@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { ErrorHandler, NgModule, APP_INITIALIZER } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule, ToastController } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { TodoApp } from './app.component';
@@ -10,6 +10,7 @@ import { TodayPage } from '../pages/today/today.component';
 import { TodoList } from '../components/todolist.component';
 import { TodoProvider } from '../providers/todo/todo.provider';
 import { APP_CONFIG, CONFIG } from './config/app.config';
+import { registerServiceWorkerAndCheckForUpdate } from './app.initializer.provider';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,13 @@ import { APP_CONFIG, CONFIG } from './config/app.config';
   providers: [
     TodoProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: APP_CONFIG, useValue: CONFIG}
+    {provide: APP_CONFIG, useValue: CONFIG},
+    {
+      provide: APP_INITIALIZER,
+      useFactory: registerServiceWorkerAndCheckForUpdate,
+      deps: [ToastController],
+      multi: true
+    },
   ]
 })
 export class AppModule {}
