@@ -39,6 +39,12 @@ export class HomePage {
     };
   }
 
+  reloadPage(refresher) {
+    setTimeout(() => {
+      location.reload();
+    }, 750);
+  }
+
   goToInbox() {
     this.navCtrl.push(InboxPage);
   }

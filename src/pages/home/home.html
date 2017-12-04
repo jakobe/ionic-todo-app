@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content [ngStyle]="{'background': '#f4f4f4'}">
+  <ion-refresher (ionRefresh)="reloadPage($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-searchbar placeholder="Search Items"></ion-searchbar>
   <!-- <ion-searchbar placeholder="Search Items" (ionInput)="filterItems($event)"></ion-searchbar> -->
