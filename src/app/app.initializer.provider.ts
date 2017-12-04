@@ -20,15 +20,17 @@ export function registerServiceWorkerAndCheckForUpdate(toastCtrl: ToastControlle
   
   
     return () => {
-        //console.log("APP_INITIALIZER...");
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            //console.log("SW controller changed - display new version available"); 
-            presentUpdateAvailable();
-        });
-        //Postpone first registration until first load has settled:
-        window.addEventListener('load', () => {
-            //console.log("window.onLoad: Register SW...");
-            registerServiceWorker();
-        });
+        if ('serviceWorker' in navigator) {
+            //console.log("APP_INITIALIZER...");
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                //console.log("SW controller changed - display new version available"); 
+                presentUpdateAvailable();
+            });
+            //Postpone first registration until first load has settled:
+            window.addEventListener('load', () => {
+                //console.log("window.onLoad: Register SW...");
+                registerServiceWorker();
+            });
+        }
     };
 }
