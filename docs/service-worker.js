@@ -17,13 +17,11 @@ importScripts('workbox-sw.prod.v2.1.2.js');
  * manifest which accounts for changes to local files and update the revision
  * accordingly.
  */
-
 const workboxSW = new self.WorkboxSW({
-  "skipWaiting": true,
-  "clientsClaim": true
+  "skipWaiting": true
 });
 const cacheFirstStrategy = workboxSW.strategies.cacheFirst();
-workboxSW.router.registerRoute('/*', cacheFirstStrategy);
+workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([
   {
     "url": "build/main.css",
@@ -31,7 +29,7 @@ workboxSW.precache([
   },
   {
     "url": "build/main.js",
-    "revision": "ce6e689f34f8a36060f612a399b68c8a"
+    "revision": "afa6d0aeccfc3017b681e60c228316d5"
   },
   {
     "url": "build/polyfills.js",
@@ -39,7 +37,7 @@ workboxSW.precache([
   },
   {
     "url": "build/vendor.js",
-    "revision": "d03aff83c5d6a95ba2196b496a194774"
+    "revision": "62560ebebde8617a236597ae8aafadba"
   },
   {
     "url": "favicon-16x16.png",
@@ -55,7 +53,7 @@ workboxSW.precache([
   },
   {
     "url": "index.html",
-    "revision": "34e4647172ec5c0437d066f051ccfec5"
+    "revision": "4f07e7612e9f419781323190689f100a"
   },
   {
     "url": "manifest.json",
