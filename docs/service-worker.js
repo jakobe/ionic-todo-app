@@ -20,6 +20,7 @@ importScripts('workbox-sw.prod.v2.1.2.js');
 const workboxSW = new self.WorkboxSW({
   "skipWaiting": true
 });
+//cache busting 2
 const cacheFirstStrategy = workboxSW.strategies.cacheFirst();
 workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([
