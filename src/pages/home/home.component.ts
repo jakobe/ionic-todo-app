@@ -41,7 +41,7 @@ export class HomePage {
 
   reloadPage(refresher) {
     setTimeout(() => {
-      location.reload();
+      location.reload(true);
     }, 750);
   }
 
