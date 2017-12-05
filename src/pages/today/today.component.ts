@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { map } from 'rxjs/operators/map';
 
 import { TodoProvider } from '../../providers/todo/todo.provider';
 import { TodoItem } from '../../models/TodoItem';
@@ -35,27 +36,19 @@ export class TodayPage {
   }
  
   get count() {
-    return this.todos.map(todos => todos.filter(item => item.isDone === false).length);
+    return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false).length));
   }
 
   get today() {
-    return this.todos.map(
-      todos => todos.filter(
-        todo => !todo.dueTonight
-      )
-    );
+    return this.todos.pipe(map(todos => todos.filter(todo => !todo.dueTonight)));
   }
 
   get tonight() {
-    return this.todos.map(
-      todos => todos.filter(
-        todo => todo.dueTonight
-      )
-    );
+    return this.todos.pipe(map(todos => todos.filter(todo => todo.dueTonight)));
   }
 
   get tonightCount() {
-    return this.tonight.map(todos => todos.length);
+    return this.tonight.pipe(map(todos => todos.length));
   }
 
 }

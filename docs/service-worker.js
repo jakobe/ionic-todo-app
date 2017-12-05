@@ -25,19 +25,19 @@ workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([
   {
     "url": "build/main.css",
-    "revision": "1ce7d89bf541c3deca0ceac44d15b91e"
+    "revision": "3d66ae499abc7dcad679e03cbdc27d1c"
   },
   {
     "url": "build/main.js",
-    "revision": "960c8d6a05e8e93def9022af473f922f"
+    "revision": "e8adb3af3266d002dd9dcc5cc3173db1"
   },
   {
     "url": "build/polyfills.js",
-    "revision": "a0f85bbdf3767a0ba06226c4ba43053f"
+    "revision": "443c697fc904cd88a651d09cf5c2fe2b"
   },
   {
     "url": "build/vendor.js",
-    "revision": "a80a16e4d58b35cc153c71bee5717441"
+    "revision": "d5862f7c101cb564159ad10f416cb6d9"
   },
   {
     "url": "favicon-16x16.png",
@@ -53,7 +53,7 @@ workboxSW.precache([
   },
   {
     "url": "index.html",
-    "revision": "65077db1f32708514e9ea187563959c2"
+    "revision": "af826186bb6b5a4ed268c376430477a1"
   },
   {
     "url": "manifest.json",

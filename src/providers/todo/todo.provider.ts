@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
+import { map } from 'rxjs/operators/map';
 
 import { TodoItem } from '../../models/TodoItem';
 
@@ -36,10 +35,10 @@ export class TodoProvider {
     this.loadFromStorage().then(result => {
       if(result) {
         if (Array.isArray(result)) {
-          this.dataStore.todos = result.map(_todoItemFromData);          
+          this.dataStore.todos = result.map(_todoItemFromData);
         } else if (Array.isArray(result.inbox) && Array.isArray(result.today)) {
           //Convert from legacy schema:
-          this.dataStore.todos = result.inbox.concat(result.today).map(_todoItemFromData);          
+          this.dataStore.todos = result.inbox.concat(result.today).map(_todoItemFromData);
           this.saveToStorage();
         }
       } else {
@@ -100,11 +99,11 @@ export class TodoProvider {
   }
 
   get inbox() {
-    return this.todos.map(todos => todos.filter(todo => todo.List == null));
+    return this.todos.pipe(map(todos => todos.filter(todo => todo.List == null)));
   }
 
   get today() {
-    return this.todos.map(todos => todos.filter(todo => todo.isDueToday));
+    return this.todos.pipe(map(todos => todos.filter(todo => todo.isDueToday)));
   }
 
 }

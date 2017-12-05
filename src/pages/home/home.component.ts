@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import 'rxjs/add/operator/count';
+import { map } from 'rxjs/operators/map';
 import { NavController } from 'ionic-angular';
 
 import { InboxPage } from '../inbox/inbox.component';
@@ -29,12 +29,12 @@ export class HomePage {
     this.version = config.version;
     this.lists = {
       inbox: {
-        notdone: todoProvider.inbox.map(todos => todos.filter(_notdone).length),
-        overdue: todoProvider.inbox.map(todos => todos.filter(_overdue).length)
+        notdone: todoProvider.inbox.pipe(map(todos => todos.filter(_notdone).length)),
+        overdue: todoProvider.inbox.pipe(map(todos => todos.filter(_overdue).length))
       },
       today: {
-        notdone: todoProvider.today.map(todos => todos.filter(_notdone).length),
-        overdue: todoProvider.today.map(todos => todos.filter(_overdue).length)
+        notdone: todoProvider.today.pipe(map(todos => todos.filter(_notdone).length)),
+        overdue: todoProvider.today.pipe(map(todos => todos.filter(_overdue).length))
       }
     };
   }

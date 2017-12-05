@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
 
 import { TodoItem } from '../../models/TodoItem';
 import { TodoProvider } from '../../providers/todo/todo.provider';
@@ -30,6 +31,6 @@ export class InboxPage {
   }
   
   get count() {
-    return this.todos.map(todos => todos.filter(item => item.isDone === false).length);
+    return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false).length));
   }
 }

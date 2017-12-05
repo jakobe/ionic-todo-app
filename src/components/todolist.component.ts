@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ItemSliding } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/first';
+import { first } from 'rxjs/operators/first';
+import { map } from 'rxjs/operators/map';
 
 import { TodoProvider } from '../providers/todo/todo.provider';
 import { TodoItem } from '../models/TodoItem';
@@ -20,15 +21,15 @@ export class TodoList {
     newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
 
     get count() {
-      return this.todos.map(todos => todos.length);
+      return this.todos.pipe(map(todos => todos.length));
     }  
     
     get notdoneCount() {
-      return this.todos.map(todos => todos.filter(item => item.isDone === false).length);
+      return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false).length));
     }  
 
     get showReorder() {
-      return this.count.map(count => count > 1);
+      return this.count.pipe(map(count => count > 1));
     }  
 
     save() : void {
@@ -42,7 +43,7 @@ export class TodoList {
     
     reorderItems(indexes) {
       // console.log("indexes: %s", JSON.stringify(indexes));
-      this.todos.first().subscribe(todos => {
+      this.todos.pipe(first()).subscribe(todos => {
         let itemFrom = todos[indexes.from];
         let itemTo = todos[indexes.to];
         // console.log("itemFrom: %s", itemFrom.title);
