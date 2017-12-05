@@ -41,23 +41,23 @@ workboxSW.precache([
   },
   {
     "url": "favicon-16x16.png",
-    "revision": "e4cf943a61395f00b8142509c50f358b"
+    "revision": "b5379073ef07ff2031249146437c6a47"
   },
   {
     "url": "favicon-32x32.png",
-    "revision": "704f843114c46926df788af89bef96ff"
+    "revision": "58eec484bf79fb40728ce4a30050b25c"
   },
   {
     "url": "favicon.ico",
-    "revision": "01e28adca754a6082ac7430b470c0661"
+    "revision": "f63167d52ddcc7d7c40ca9b47ff583c3"
   },
   {
     "url": "index.html",
-    "revision": "4f07e7612e9f419781323190689f100a"
+    "revision": "65077db1f32708514e9ea187563959c2"
   },
   {
     "url": "manifest.json",
-    "revision": "d4aa2e2bbe4298dc470269c49a731013"
+    "revision": "195d6c5f46da43d19d2dad5f43c0adf8"
   },
   {
     "url": "workbox-sw.prod.v2.1.2.js",
