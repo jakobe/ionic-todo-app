@@ -57,7 +57,7 @@ workboxSW.precache([
   },
   {
     "url": "manifest.json",
-    "revision": "195d6c5f46da43d19d2dad5f43c0adf8"
+    "revision": "c644e9c4ad81ccd90867dfa4bbaa52aa"
   },
   {
     "url": "workbox-sw.prod.v2.1.2.js",
