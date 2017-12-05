@@ -29,7 +29,7 @@ workboxSW.precache([
   },
   {
     "url": "build/main.js",
-    "revision": "4a38d82e6bb90c4499f36aba1d5059bf"
+    "revision": "960c8d6a05e8e93def9022af473f922f"
   },
   {
     "url": "build/polyfills.js",
@@ -37,7 +37,7 @@ workboxSW.precache([
   },
   {
     "url": "build/vendor.js",
-    "revision": "62560ebebde8617a236597ae8aafadba"
+    "revision": "a80a16e4d58b35cc153c71bee5717441"
   },
   {
     "url": "favicon-16x16.png",
