@@ -21,15 +21,29 @@ import { TodoProvider } from '../../providers/todo/todo.provider';
   </ion-header>
 
   <ion-content>
-    <todo-list [todos]="todos"></todo-list>
+    <todo-list [todos]="todos" [showAddNew]="isShowingAddNew" (onHideAddNew)="onHideAddNew($event)"></todo-list>
+    <ion-fab right bottom>
+      <button ion-fab large round color='primary' (click)="showAddNew()">
+          <ion-icon name='add' icon-end></ion-icon>    
+      </button>
+    </ion-fab>
   </ion-content>`
 })
 export class InboxPage {   
   todos: Observable<TodoItem[]>;
+  isShowingAddNew = false; 
   constructor(private todoProvider: TodoProvider) {
     this.todos = this.todoProvider.inbox;
   }
   
+  showAddNew() {
+    this.isShowingAddNew = true;
+  }
+
+  onHideAddNew() {
+    this.isShowingAddNew = false;
+  }
+
   get count() {
     return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false).length));
   }

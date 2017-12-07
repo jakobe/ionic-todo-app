@@ -20,21 +20,49 @@ import { TodoItem } from '../../models/TodoItem';
   </ion-header>
 
   <ion-content>
-    <todo-list [todos]="today" [showIcons]="false" [showAddButton]="false"></todo-list>
+    <ion-card class="alldone" *ngIf="(undone | async)?.length === 0">
+      <ion-card-header color="whisper">
+        <ion-icon name="checkmark"></ion-icon>
+        <!-- or maybe paper plane? <ion-icon name="paper-plane"></ion-icon>--> 
+        Just relax, nothing more to do today :)
+      </ion-card-header>
+      <ion-card-content color="whisper">
+        <em>(Or get productive and add something to do...)</em>
+      </ion-card-content>
+    </ion-card>
+    <todo-list [todos]="today" [showIcons]="false" [showAddNew]="isShowingAddNew" (onHideAddNew)="onHideAddNew($event)"></todo-list>
     <ion-item *ngIf="tonightCount | async" style="border-bottom: 1px dotted #ccc" padding-left padding-right><ion-icon name="moon" color="primary"></ion-icon>Tonight</ion-item>
     <todo-list *ngIf="tonightCount | async" [todos]="tonight" [showIcons]="false" [newDefaults]="newDefaults"></todo-list>
+    <ion-fab right bottom>
+      <button ion-fab large round color='bright' (click)="showAddNew()">
+          <ion-icon name='add' icon-end></ion-icon>    
+      </button>
+    </ion-fab>
   </ion-content>`
 })
 
 export class TodayPage {
   newDefaults = new TodoItem("", "", false, TodoItem.today);
+  isShowingAddNew = false;
   constructor(private todoProvider: TodoProvider) {
+  }
+
+  showAddNew() {
+    this.isShowingAddNew = true;
+  }
+
+  onHideAddNew() {
+    this.isShowingAddNew = false;
   }
 
   get todos() {
     return this.todoProvider.today;
   }
  
+  get undone() {
+    return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false)));
+  }
+
   get count() {
     return this.todos.pipe(map(todos => todos.filter(item => item.isDone === false).length));
   }

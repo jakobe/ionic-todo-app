@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges,  SimpleChange, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ItemSliding } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { first } from 'rxjs/operators/first';
@@ -11,13 +11,14 @@ import { TodoItem } from '../models/TodoItem';
     selector: 'todo-list',
     templateUrl: 'todolist.html'
 })
-export class TodoList {
+export class TodoList implements OnChanges {
     @Input() todos: Observable<TodoItem[]>;
     @Input() showIcons: boolean = true;
-    @Input() showAddButton: boolean = true;
+    @Input() showAddNew: boolean = false;
     @Input() newDefaults: TodoItem;
+    @Output() onHideAddNew = new EventEmitter();
+    @ViewChild('newTodoInput') newTodoInput;
 
-    adding : Boolean;
     newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
 
     get count() {
@@ -30,7 +31,35 @@ export class TodoList {
 
     get showReorder() {
       return this.count.pipe(map(count => count > 1));
-    }  
+    }
+
+    ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+      if (changes.showAddNew) {
+        let input = this.newTodoInput;
+        setTimeout(function() {input.setFocus();}, 1);
+      }
+      // for (let propName in changes) {
+      //   let changedProp = changes[propName];
+      //   let to = JSON.stringify(changedProp.currentValue);
+      //   if (changedProp.isFirstChange()) {
+      //     //Initial value of ${propName} set to ${to}
+      //   } else {
+      //     let from = JSON.stringify(changedProp.previousValue);
+      //     //${propName} changed from ${from} to ${to}
+      //   }
+      // }
+    }
+      
+    cancelAdd() {
+      this.hideAddNew();
+    }
+
+    hideAddNew() {
+      this.showAddNew = false;
+      this.onHideAddNew.emit();
+      this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);     
+    }
+      
 
     save() : void {
       this.todoProvider.save();
@@ -38,9 +67,9 @@ export class TodoList {
     
     addItem() : void {
       this.todoProvider.create(this.newItem);
-      this.adding = false;
+      this.hideAddNew();
     };
-    
+   
     reorderItems(indexes) {
       // console.log("indexes: %s", JSON.stringify(indexes));
       this.todos.pipe(first()).subscribe(todos => {
@@ -54,11 +83,6 @@ export class TodoList {
     
     delete(item : TodoItem) {
       this.todoProvider.delete(item);      
-    };
-    showAddNew(input) {
-      this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
-      this.adding = true;
-      setTimeout(function() {input.setFocus();}, 1);
     };
     
     setDueToday(item : TodoItem, slidingItem: ItemSliding) {

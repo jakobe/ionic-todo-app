@@ -1,9 +1,9 @@
-<ion-list [hidden]="!adding" inset>
+<ion-list [hidden]="!showAddNew" inset>
     <ion-item>
-    <ion-input #newTodo [(ngModel)]="newItem.title" ion-input placeholder="What to do...?"></ion-input>
+    <ion-input #newTodoInput [(ngModel)]="newItem.title" ion-input placeholder="What to do...?"></ion-input>
     </ion-item>
     <ion-item>
-    <button round icon-only large item-right ion-button color='danger' (click)="adding = false;">
+    <button round icon-only large item-right ion-button color='danger' (click)="cancelAdd()">
         <ion-icon name='close'></ion-icon>
     </button>
     <button round icon-only large item-right ion-button color='secondary' (click)="addItem()">
@@ -14,7 +14,7 @@
 
 <ion-list [reorder]="showReorder | async" (ionItemReorder)="reorderItems($event)">
     <ion-item-sliding *ngFor="let todo of todos | async" #slidingItem>
-        <ion-item>
+        <ion-item [ngClass]="{'done': todo.isDone}">
             <ion-checkbox [(ngModel)]="todo.isDone" (click)="save()" item-start></ion-checkbox>
             <ion-label>
             <h3>
@@ -43,6 +43,3 @@
         </ion-item-options>
     </ion-item-sliding>
 </ion-list>
-<button *ngIf="showAddButton" ion-button class="add" large round color='primary' icon-only (click)="showAddNew(newTodo);">
-    <ion-icon name='add' icon-end></ion-icon>    
-</button>
