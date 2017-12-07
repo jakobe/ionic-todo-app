@@ -25,11 +25,11 @@ workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([
   {
     "url": "build/main.css",
-    "revision": "3d66ae499abc7dcad679e03cbdc27d1c"
+    "revision": "f0f4c99cdacbb609d4c38457e5157973"
   },
   {
     "url": "build/main.js",
-    "revision": "e8adb3af3266d002dd9dcc5cc3173db1"
+    "revision": "f11df398ff30981454429bcc1d24397f"
   },
   {
     "url": "build/polyfills.js",
@@ -37,7 +37,7 @@ workboxSW.precache([
   },
   {
     "url": "build/vendor.js",
-    "revision": "d5862f7c101cb564159ad10f416cb6d9"
+    "revision": "1c259c28f807dd6a5e9e6c9a12204dd5"
   },
   {
     "url": "favicon-16x16.png",
