@@ -22,7 +22,13 @@ import { registerServiceWorkerAndCheckForUpdate } from './app.initializer.provid
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(TodoApp),
+    IonicModule.forRoot(TodoApp, null, {
+      links: [
+        {component: HomePage, name: 'Home', segment: ''},
+        {component: InboxPage, name: 'Inbox', segment: 'inbox', defaultHistory: [HomePage]},
+        {component: TodayPage, name: 'Today', segment: 'today', defaultHistory: [HomePage]},
+      ]
+    }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
