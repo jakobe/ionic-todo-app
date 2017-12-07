@@ -4,7 +4,9 @@ todo-list {
         color: color($colors, danger);
     }
     
-    .item-md ion-icon[inline] {
+    .item-md ion-icon[inline],
+    .item-wp ion-icon[inline],
+    .item-ios ion-icon[inline] {
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -12,6 +14,14 @@ todo-list {
     button.add {
         margin-right: 10px;
         float: right;
+    }
+
+    .item-md.done ion-label,
+    .item-wp.done ion-label,
+    .item-ios.done ion-label {
+        opacity: 0.3;
+        pointer-events: none;
+        font-style: italic;
     }
 
 }
