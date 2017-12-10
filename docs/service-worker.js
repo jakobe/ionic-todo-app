@@ -29,7 +29,7 @@ workboxSW.precache([
   },
   {
     "url": "build/main.js",
-    "revision": "f11df398ff30981454429bcc1d24397f"
+    "revision": "0b45289bc31f042b67d599315c96b771"
   },
   {
     "url": "build/polyfills.js",
