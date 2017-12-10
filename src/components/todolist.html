@@ -13,7 +13,7 @@
 </ion-list>
 
 <ion-list [reorder]="showReorder | async" (ionItemReorder)="reorderItems($event)">
-    <ion-item-sliding *ngFor="let todo of todos | async" #slidingItem>
+    <ion-item-sliding *ngFor="let todo of todos | async" #slidingItem (ionSwipe)="delete(todo)">
         <ion-item [ngClass]="{'done': todo.isDone}">
             <ion-checkbox [(ngModel)]="todo.isDone" (click)="save()" item-start></ion-checkbox>
             <ion-label>
@@ -26,7 +26,7 @@
             </ion-label>
         </ion-item>
         <ion-item-options side="left">
-            <button ion-button color='danger' (click)="delete(todo)">
+            <button ion-button expandable color='danger' (click)="delete(todo)">
             <ion-icon name='trash'></ion-icon>
             Delete
             </button>
