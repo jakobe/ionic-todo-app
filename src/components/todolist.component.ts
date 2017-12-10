@@ -59,7 +59,6 @@ export class TodoList implements OnChanges {
       this.onHideAddNew.emit();
       this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);     
     }
-      
 
     save() : void {
       this.todoProvider.save();
