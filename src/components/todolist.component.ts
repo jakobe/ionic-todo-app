@@ -19,7 +19,7 @@ export class TodoList implements OnChanges {
     @Output() onHideAddNew = new EventEmitter();
     @ViewChild('newTodoInput') newTodoInput;
 
-    newItem = Object.assign(new TodoItem("", ""), this.newDefaults);
+    newItem : TodoItem;
 
     get count() {
       return this.todos.pipe(map(todos => todos.length));
@@ -33,10 +33,14 @@ export class TodoList implements OnChanges {
       return this.count.pipe(map(count => count > 1));
     }
 
+    initNewItem() {
+      this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);      
+    }
+
     ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
       if (changes.showAddNew) {
-        let input = this.newTodoInput;
-        setTimeout(function() {input.setFocus();}, 1);
+        this.initNewItem();
+        this.focusInput();
       }
       // for (let propName in changes) {
       //   let changedProp = changes[propName];
@@ -49,6 +53,11 @@ export class TodoList implements OnChanges {
       //   }
       // }
     }
+
+    focusInput() {
+      let input = this.newTodoInput;
+      setTimeout(function() {input.setFocus();}, 0);
+    }
       
     cancelAdd() {
       this.hideAddNew();
@@ -57,16 +66,17 @@ export class TodoList implements OnChanges {
     hideAddNew() {
       this.showAddNew = false;
       this.onHideAddNew.emit();
-      this.newItem = Object.assign(new TodoItem("", ""), this.newDefaults);     
+      this.initNewItem();      
     }
 
-    save() : void {
+    save() {
       this.todoProvider.save();
     };
     
-    addItem() : void {
+    addItem() {
       this.todoProvider.create(this.newItem);
-      this.hideAddNew();
+      this.initNewItem();
+      this.focusInput();
     };
    
     reorderItems(indexes) {
@@ -99,5 +109,6 @@ export class TodoList implements OnChanges {
     };
   
     constructor(private todoProvider: TodoProvider) {
+      this.initNewItem();
     }
 }

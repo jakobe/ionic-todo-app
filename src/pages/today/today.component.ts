@@ -30,7 +30,7 @@ import { TodoItem } from '../../models/TodoItem';
         <em>(Or get productive and add something to do...)</em>
       </ion-card-content>
     </ion-card>
-    <todo-list [todos]="today" [showIcons]="false" [showAddNew]="isShowingAddNew" (onHideAddNew)="onHideAddNew($event)"></todo-list>
+    <todo-list [todos]="today" [showIcons]="false" [newDefaults]="newDefaults" [showAddNew]="isShowingAddNew" (onHideAddNew)="onHideAddNew($event)"></todo-list>
     <ion-item *ngIf="tonightCount | async" style="border-bottom: 1px dotted #ccc" padding-left padding-right><ion-icon name="moon" color="primary"></ion-icon>Tonight</ion-item>
     <todo-list *ngIf="tonightCount | async" [todos]="tonight" [showIcons]="false" [newDefaults]="newDefaults"></todo-list>
     <ion-fab right bottom>
