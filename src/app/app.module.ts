@@ -8,9 +8,11 @@ import { HomePage } from '../pages/home/home.component';
 import { InboxPage } from '../pages/inbox/inbox.component';
 import { TodayPage } from '../pages/today/today.component';
 import { TodoList } from '../components/todolist.component';
+import { TodoListItem } from '../components/todo-list-item/todo-list-item.component';
 import { TodoProvider } from '../providers/todo/todo.provider';
 import { APP_CONFIG, CONFIG } from './config/app.config';
 import { registerServiceWorkerAndCheckForUpdate } from './app.initializer.provider';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { registerServiceWorkerAndCheckForUpdate } from './app.initializer.provid
     HomePage,
     InboxPage,
     TodayPage,
-    TodoList
+    TodoList,
+    TodoListItem
   ],
   imports: [
     BrowserModule,
+    PipesModule,
     IonicModule.forRoot(TodoApp, null, {
       links: [
         {component: HomePage, name: 'Home', segment: ''},

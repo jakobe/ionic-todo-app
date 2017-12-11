@@ -17,21 +17,11 @@
   <!-- <ion-item-divider color="light"></ion-item-divider> -->
 
   <ion-list>     
-      <button ion-item (click)="goToInbox()" icon-start>
-        <ion-icon name='ios-filing' color='primary' item-start></ion-icon>
-        Inbox
-        <ion-badge *ngIf="lists.inbox.overdue | async" color='danger' item-end>{{lists.inbox.overdue | async}}</ion-badge>
-        <ion-note *ngIf="lists.inbox.notdone | async" item-end>{{lists.inbox.notdone | async}}</ion-note>
-      </button>
+    <todo-list-item title="Inbox" [todos]="inbox" iconName="ios-filing" iconColor="primary" (goto)="goToInbox()"></todo-list-item>
   </ion-list>
 
   <ion-list >
-    <button ion-item (click)="goToToday()" icon-start>
-      <ion-icon name='star' color='bright' item-start></ion-icon>
-      Today
-      <ion-badge *ngIf="lists.today.overdue | async" color='danger' item-end>{{lists.today.overdue | async}}</ion-badge>
-      <ion-note *ngIf="lists.today.notdone | async" item-end>{{lists.today.notdone | async}}</ion-note>
-    </button>
+    <todo-list-item title="Today" [todos]="today" iconName="star" iconColor="bright" (goto)="goToToday()"></todo-list-item>
 
     <button ion-item icon-start detail-none>
       <ion-icon name='albums' [ngStyle]="{'color': 'gray'}" item-start></ion-icon>

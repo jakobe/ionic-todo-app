@@ -1,0 +1,6 @@
+<button ion-item (click)="goto.emit()" icon-start>
+    <ion-icon [name]='iconName' [color]='iconColor' item-start></ion-icon>
+    <ion-label>{{title}}</ion-label>
+    <ion-badge *ngIf="(todos | overdue | async)?.length" color='danger' item-end>{{(todos | overdue | async)?.length}}</ion-badge>
+    <ion-note *ngIf="(todos | notDone | async)?.length" item-end>{{(todos | notDone | async)?.length}}</ion-note>
+</button>
