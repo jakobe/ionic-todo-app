@@ -20,7 +20,6 @@ importScripts('workbox-sw.prod.v2.1.2.js');
 const workboxSW = new self.WorkboxSW({
   "skipWaiting": true
 });
-var cachebust = 1;
 const cacheFirstStrategy = workboxSW.strategies.cacheFirst();
 workboxSW.router.registerRoute(new RegExp('/.*'), cacheFirstStrategy);
 workboxSW.precache([
@@ -30,7 +29,7 @@ workboxSW.precache([
   },
   {
     "url": "build/main.js",
-    "revision": "0b45289bc31f042b67d599315c96b771"
+    "revision": "6ff98cde795a26c0351935a1715316fc"
   },
   {
     "url": "build/polyfills.js",
@@ -38,7 +37,7 @@ workboxSW.precache([
   },
   {
     "url": "build/vendor.js",
-    "revision": "1c259c28f807dd6a5e9e6c9a12204dd5"
+    "revision": "2a79faccff8928577643c255107cde87"
   },
   {
     "url": "favicon-16x16.png",
